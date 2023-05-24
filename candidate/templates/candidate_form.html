@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title style="font-size: 24px; font-weight: bold; text-align: center;">Candidate Registration</title>
+    <style>
+        label {
+            display: inline-block;
+            width: 100px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        input[type=text], input[type=number], select {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        input[type=file] {
+            margin-bottom: 10px;
+        }
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        form {
+            width: 25%;
+            margin: 0 auto;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="font-weight: bold; text-align: center;">Candidate Registration</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Name:</label>
+        <input type="text" name="name"><br><br>
+        <label>Age:</label>
+        <input type="number" name="age"><br><br>
+        <label>Gender:</label>
+        <select name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br><br>
+        <label>Photo:</label><span></span>
+        <input type="file" name="photo"><br><br>
+        <input type="submit" value="Submit" style="text-align: center">
+    </form>
+</body>
+</html>
+{% endblock %}

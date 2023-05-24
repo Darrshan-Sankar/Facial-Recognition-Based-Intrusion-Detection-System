@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+  <title>{% block title %}Stream{% endblock %}</title>
+  {% block css %}
+  <style>
+    .cont{
+        font-family: Arial, sans-serif;
+        display: grid;
+        justify-content: center;
+        height: 75vh;
+      }
+    #video{
+        font-family: Arial, sans-serif;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        height: 75vh;
+      }
+    .req{
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+      }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navb {
+      background-color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .nav-bran {
+      color: white;
+      font-size: 24px;
+      text-decoration: none;
+    }
+    
+    .nav-bran::hover{
+      color: white;
+      font-size: 24px;
+      text-decoration: none;
+    }
+
+    .navb-na {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .nav-item {
+      margin: 0 10px;
+    }
+
+    .nav-lin {
+        border: 5px solid #3f3f3f;
+        background: #3f3f3f;
+        padding: 3px;
+        border-radius: 25px;
+        color: white;
+        text-decoration:none;
+        margin: 1em;
+    }
+
+    h1 {
+        color: #333;
+      }
+
+   
+    .nav-lin:hover {
+        color: #3f3f3f;
+        border: 5px solid #ffffff;
+        background: #ffffff;
+    }
+
+    .container {
+      margin-top: 20px;
+    }
+
+    label {
+      font-size: 18px;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"], input[type="number"], select {
+      font-size: 16px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #555;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      margin: 10vh 0vh 0vh 0vh;
+      display :flex;
+    }
+    
+    .footer-col li {
+      list-style: none;
+      padding: 5px 0;
+    }
+    
+    .footer-col li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    .footer-col li a:hover {
+      color: #ccc;
+    }
+    
+    hr {
+      border-color: #444;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    .footb {
+    margin-bottom: 0; /* Push the footer to the bottom of the page */
+    }
+
+  </style>
+  {% endblock %}
+{% block extra_head %}
+{% endblock %}
+
+</head>
+<body>
+  <nav class="navb">
+    <a class="nav-bran" href="#">Face Identification System</a>
+    <div class="navb-na">
+      <a class="nav-lin" href="{% url 'candidate_form' %}">Add Candidate</a>
+      <a class="nav-lin" href="{% url 'candidate_list' %}">Candidate List</a>
+      <a class="nav-lin" href="{% url 'delete_candidate' %}">Delete Candidate</a>
+      <a class="nav-lin" href="{% url 'webcam_feed' %}">Stream</a>
+      <a class="nav-lin" href="{% url 'detection_list' %}">Intrusion List</a>
+
+    </div>
+  </nav>
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <footer class="footb">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-6">
+          <h5>Follow Us</h5>
+          <ul class="footer-col">
+            <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i> Instagram</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <h5>About Me</h5>
+          <p>Machine Learning enthusiast, with skills in Python, Django, React JS, C, and Java(beginner). Have adequate skills to maintain adapt to all sorts of environments. </p>
+        </div>
+        <div class="col-md-4 col-sm-6">
+          <h5>Contact Me</h5>
+          <ul class="footer-col">
+            <li><i class="fa fa-envelope"></i> Email: Yourmailaddress@email.com</li>
+            <li><i class="fa fa-phone"></i> Phone: your phone number</li>
+            <li><i class="fa fa-map-marker"></i> Address: Your address</li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-center">Copyright &copy; 2023</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

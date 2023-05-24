@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Delete Candidate</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {% for candidate in candidates %}
+      <div>
+        <label>
+          <input type="radio" name="candidate_id" value="{{ candidate.id }}" required>
+          {{ candidate.name }}
+        </label>
+        <p>Age: {{ candidate.age }}</p>
+        <p>Gender: {{ candidate.gender }}</p>
+        <p><img src="{{ candidate.photo.url }}" alt="Candidate Photo" style="max-width: 300px;"></p>
+      </div>
+    {% empty %}
+      <p>No candidates found.</p>
+    {% endfor %}
+    <button type="submit">Delete Candidate</button>
+  </form>
+{% endblock %}

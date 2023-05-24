@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Detection List</h1>
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            <li>
+                <input type="checkbox" id="select-all-checkbox">
+                <label for="select-all-checkbox">Select All</label>
+            </li>
+            {% for detection in detections %}
+                <li>
+                    <input type="checkbox" name="selected_detections" value="{{ detection.id }}">
+                    <strong>Time:</strong> {{ detection.time }}<br>
+                    <strong>Frame:</strong> <img src="{{ detection.frame.url }}" alt="Frame"><br>
+                </li>
+            {% endfor %}
+            <button type="submit" name="delete">Delete Selected</button>
+            <button type="submit" name="email">Email Intrusion List</button>
+        </ul>
+    </form>
+    <script>
+        // JavaScript code to handle select all checkbox functionality
+        const selectAllCheckbox = document.getElementById('select-all-checkbox');
+        const detectionCheckboxes = document.getElementsByName('selected_detections');
+
+        selectAllCheckbox.addEventListener('change', () => {
+            const isChecked = selectAllCheckbox.checked;
+            for (let i = 0; i < detectionCheckboxes.length; i++) {
+                detectionCheckboxes[i].checked = isChecked;
+            }
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+<style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    th{
+      background-color: #333;
+      color: white;
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        overflow-x: scroll;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+    
+    p {
+      text-align: center;
+    }
+  </style>
+  
+  {% block content %}
+  <h1>Candidate List</h1>
+
+  {% if candidates %}
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Photo</th>
+          <th>Landmarks</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for candidate in candidates %}
+          <tr>
+            <td style="max-width: 200px; max-height: 100px; overflow: auto;">{{ candidate.name }}</td>
+            <td style="max-width: 100px; max-height: 100px; overflow: auto;"><img src="{{ candidate.photo.url }}" alt="Candidate Photo" width="100" height="100"></td>
+            <td style="height: 50px; width: 50em; overflow: scroll;">{{ candidate.landmarks }}</td>
+            <td style="max-width: 100px; max-height: 100px; overflow: auto;">{{ candidate.age }} years</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No candidates found.</p>
+  {% endif %}
+
+{% endblock %}

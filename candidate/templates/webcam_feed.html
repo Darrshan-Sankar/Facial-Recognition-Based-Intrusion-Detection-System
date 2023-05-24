@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam Feed</title>
+</head>
+{% block content %}
+<body>
+    <div class="cont">
+        <h1 class = "req">Webcam Feed</h1>
+        <img src="{% url 'video_feed' %}" />
+    </div>
+</body>
+{% endblock %}
+</html>
